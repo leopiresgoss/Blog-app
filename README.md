@@ -1,24 +1,53 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# School Library
+> A web application to record what books are in the library and who borrows them. Built with: Ruby
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby on Rails
+- PostgreSQL
 
-* System dependencies
+## Requirements 
+Install:
+- [Ruby v.3.1.2](https://www.ruby-lang.org/en/documentation/installation/)
+- [Rails v.7.0.3](https://guides.rubyonrails.org/v5.0/getting_started.html#installing-rails)
+- [psql (PostgreSQL) v.14.3](https://www.postgresql.org/download/)
 
-* Configuration
+## Getting Started
 
-* Database creation
+To get a local copy follow these simple example steps.  
 
-* Database initialization
+1. Open the terminal window and clone the repository using this command:  
+`git@github.com:leopiresgoss/Blog-app.git` 
+2. Change the directory:`cd Blog-app`
+3. Install the project's dependencies by running this command:   
+`bundle install`
+4. Make sure that PostgreSQL is running perfectly in your computer
+5. Run `rails db:create` to create the database in PostgreSQL
+6. Run `rails s` to start the server
+7. [OPTIONAL] To test the application, run `rspec`
 
-* How to run the test suite
+## Author
+👤 **Leonardo Pires Goss**
+- GitHub: [leopiresgoss](https://github.com/leopiresgoss)
+- Twitter: [@leonardopgoss](https://twitter.com/leonardopgoss)
+- [LinkedIn](https://www.linkedin.com/in/leonardogoss/)
 
-* Services (job queues, cache servers, search engines, etc.)
+## 🤝 Contributing
 
-* Deployment instructions
+Contributions, issues, and feature requests are welcome!
 
-* ...
+Feel free to check the [issues page](https://github.com/leopiresgoss/Blog-app/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- A special thank for @fernandorpm for this amazing [README template](https://github.com/microverseinc/readme-template)
+
+## 📝 License
+
+This project is [MIT](/LICENSE) licensed.
