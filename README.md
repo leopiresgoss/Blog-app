@@ -1,7 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# School Library
-> A web application to record what books are in the library and who borrows them. Built with: Ruby
+# Blog App
 
 ## Built With
 
