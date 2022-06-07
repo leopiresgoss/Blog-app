@@ -1,38 +1,11 @@
 <section id="posts-index">
   <ul>
     <li class="flex">
-      <img src=<%= @user.photo %> alt="" class="user-avatar sm">
-      <div class="details flex-col border">
-        <h3><%= @user.name %></h3>
-        <p class="text-end">Number of posts: <%= @user.posts_counter %></p>
-      </div>
+      <%= render "shared/user_container", user: @user %>
     </li>
     <li>
       <ul class="posts flex-col">
-        <% @posts.reverse.each do |post| %>
-          <li class="flex-col border post-info">
-            <%= link_to "posts/#{post.id}", class:"flex-col" do %>
-              <div class="post-details">
-              <h4 class="title"><%= truncate post.title, length: 100 %></h4>
-              <p class="text"><%= truncate post.text, length: 100 %></p>
-              <p class="more-info text-end">
-                Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %>
-              </p>
-              </div>
-              <ul class="comments">
-              <% post.five_recent_comments.each do |comment| %>
-                <li>
-                  <p>
-                    <strong><%= comment.author.name %>: </strong>
-                    <%= comment.text %>
-                  </p>
-                  <br>
-                </li>
-              <% end %>
-              </ul>
-            <% end %>
-          </li>
-        <% end %>
+        <%= render "shared/list_posts", posts: @posts.reverse %>
       </ul>
     </li>
 

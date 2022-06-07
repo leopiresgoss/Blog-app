@@ -7,15 +7,7 @@
       <p class="text"><%= @post.text %></p>
     </div>
     <ul class="comments border">
-      <% @post.comments.each do |comment| %>
-        <li>
-          <p>
-            <strong><%= comment.author.name %>: </strong>
-            <%= comment.text %>
-          </p>
-          <br>
-        </li>
-      <% end %>
+      <%= render "shared/comments", comments: @post.comments %>
     </ul>
   </div>
 </section>

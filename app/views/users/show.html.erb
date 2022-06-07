@@ -1,11 +1,7 @@
 <section id="users-show" class="flex-col">
   <ul class="user-info flex-col">
     <li class="flex">
-      <img src=<%= @user.photo %> alt="" class="user-avatar sm">
-      <div class="details flex-col border">
-        <h3><%= @user.name %></h3>
-        <p class="text-end">Number of posts: <%= @user.posts_counter %></p>
-      </div>
+      <%= render "shared/user_container", user: @user %>
     </li>
 
     <li class="bio flex-col border">
@@ -15,18 +11,7 @@
 
     <li class="posts">
       <ul class="flex-col">
-        <% @user.tree_recent_posts.each_with_index do |post, index| %>
-          <li class="border">
-          <%= link_to "#{@user.id}/posts/#{post.id}", class:"flex-col post-info" do %>
-              <h4 class="title"><%= truncate post.title, length: 100 %></h4>
-              <p class="text"><%= truncate post.text, length: 100 %></p>
-              <p class="more-info text-end">
-                Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %>
-              </p>
-              </div>
-          <% end %>
-          </li>
-        <% end %>
+        <%= render "shared/list_posts", posts: @user.tree_recent_posts %>
       </ul>
     </li>
   </ul>
