@@ -1,15 +1,18 @@
 <section id="posts-show">
-  <h2>Here is a post for a given user</h2>
   <div class="post">
-    <h4><%= @post.title %> by <%= @post.author.name%></h4>
-    <br>
-    <p class="more-info" >Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
-    <p><%= @post.text %></p>
-    <ul class="comments">
+    <div class="post-text border">
+      <h2><%= @post.title %> by <%= @post.author.name%></h2>
+      <br>
+      <p class="more-info text-end" >Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
+      <p class="text"><%= @post.text %></p>
+    </div>
+    <ul class="comments border">
       <% @post.comments.each do |comment| %>
         <li>
-          <strong><%= comment.author.name %>: </strong>
-          <%= comment.text %>
+          <p>
+            <strong><%= comment.author.name %>: </strong>
+            <%= comment.text %>
+          </p>
           <br>
         </li>
       <% end %>

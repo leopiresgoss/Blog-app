@@ -1,27 +1,26 @@
-<section id="users-show">
-  <h2>Here have the details of a given user</h2>
-  <ul>
-    <li>
+<section id="users-show" class="flex-col">
+  <ul class="user-info flex-col">
+    <li class="flex">
       <img src=<%= @user.photo %> alt="" class="user-avatar sm">
-      <div class="details">
+      <div class="details flex-col border">
         <h3><%= @user.name %></h3>
-        <p>Number of posts: <%= @user.posts_counter %></p>
+        <p class="text-end">Number of posts: <%= @user.posts_counter %></p>
       </div>
     </li>
 
-    <li class="bio">
+    <li class="bio flex-col border">
       <h4>Bio</h4>
       <p><%= @user.bio %></p>
     </li>
 
     <li class="posts">
-      <ul>
+      <ul class="flex-col">
         <% @user.tree_recent_posts.each_with_index do |post, index| %>
-          <li>
-          <%= link_to "#{@user.id}/posts/#{post.id}" do %>
-              <p>Post #<%= @user.posts_counter - index %></p>
-              <p class="title"><%= truncate post.title, length: 100 %></p>
-              <p class="more-info">
+          <li class="border">
+          <%= link_to "#{@user.id}/posts/#{post.id}", class:"flex-col post-info" do %>
+              <h4 class="title"><%= truncate post.title, length: 100 %></h4>
+              <p class="text"><%= truncate post.text, length: 100 %></p>
+              <p class="more-info text-end">
                 Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %>
               </p>
               </div>
