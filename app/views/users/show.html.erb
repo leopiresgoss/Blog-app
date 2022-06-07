@@ -1,1 +1,36 @@
-<h1>Here have the details of a given user.</h1>
+<section id="users-show">
+  <h2>Here have the details of a given user</h2>
+  <ul>
+    <li>
+      <img src=<%= @user.photo %> alt="" class="user-avatar sm">
+      <div class="details">
+        <h3><%= @user.name %></h3>
+        <p>Number of posts: <%= @user.posts_counter %></p>
+      </div>
+    </li>
+
+    <li class="bio">
+      <h4>Bio</h4>
+      <p><%= @user.bio %></p>
+    </li>
+
+    <li class="posts">
+      <ul>
+        <% @user.tree_recent_posts.each_with_index do |post, index| %>
+          <li>
+          <%= link_to "#{@user.id}/posts/#{post.id}" do %>
+              <p>Post #<%= @user.posts_counter - index %></p>
+              <p class="title"><%= truncate post.title, length: 100 %></p>
+              <p class="more-info">
+                Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %>
+              </p>
+              </div>
+          <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  <%= link_to "See all posts", "#{@user.id}/posts", class: "btn see-all" %>
+</section>
+

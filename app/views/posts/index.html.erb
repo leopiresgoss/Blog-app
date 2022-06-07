@@ -1,1 +1,39 @@
-<h1>Here is a list of posts for a given user</h1>
+<section id="posts-index">
+  <h2>Here is a list of posts for a given user</h2>
+  <ul>
+    <li>
+      <img src=<%= @user.photo %> alt="" class="user-avatar sm">
+      <div class="details">
+        <h3><%= @user.name %></h3>
+        <p>Number of posts: <%= @user.posts_counter %></p>
+      </div>
+    </li>
+    <li>
+      <ul class="posts">
+        <div><% @posts.reverse.each_with_index do |post, index| %>
+          <%= link_to "posts/#{post.id}" do %>
+            <div class="post-details">
+              <p>Post #<%= @user.posts_counter - index %></p>
+              <p class="title"><%= truncate post.title, length: 100 %></p>
+              <p class="more-info">
+                Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %>
+              </p>
+            </div>
+            <ul class="comments">
+            <% post.five_recent_comments.each do |comment| %>
+              <li>
+                <strong><%= comment.author.name %>: </strong>
+                <%= comment.text %>
+                <br>
+              </li>
+            <% end %>
+            </ul>
+        <% end %></div>
+        <% end %>
+      </ul>
+    </li>
+
+  </ul>
+    
+  </ul>
+</section>
