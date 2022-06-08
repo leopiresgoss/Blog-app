@@ -11,7 +11,7 @@
         <p>Liked!</p>
       <% else %>
         <%= form_with url: user_post_likes_path(@current_user, @post), scope: :like do |f| %>
-          <%= f.submit "Like" %>
+          <%= f.submit "Like", :class => "btn btn-like" %>
         <% end %>
       <% end %>
     </div>
@@ -20,11 +20,11 @@
     </ul>
     <div class="new-comment">
       <%= form_with url: user_post_comments_path(@current_user, @post), scope: :comment do |f| %>
-        <div>
+        <div class="flex-col input-box">
           <%= f.label :text, "Add new comment" %>
           <%= f.text_area :text %>
         </div>
-        <%= f.submit "Submit" %>
+        <%= f.submit "Submit", :class => "btn submit" %>
       <% end %>
     <div>
   </div>

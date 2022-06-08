@@ -1,13 +1,16 @@
-<h1>New Post</h1>
+<section id="new-post">
+  <h2>New Post</h2>
 
-<%= form_with url: user_posts_path(@current_user_id), method: :post, local: true, scope: :post do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :text %>
-    <%= f.text_area :text %>
-  </div>
-  <%= f.submit "Submit" %>
-<% end %>
+  <%= form_with url: user_posts_path(@current_user_id), method: :post, local: true, scope: :post do |f| %>
+    <div class="flex-col input-box">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="flex-col input-box" >
+      <%= f.label :text %>
+      <%= f.text_area :text %>
+    </div>
+    <%= f.submit "Submit", :class => "btn submit" %>
+  <% end %>
+
+</section>
