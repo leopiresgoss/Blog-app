@@ -21,11 +21,10 @@ class PostsController < ApplicationController
       format.html do
         if post.save
           flash[:success] = 'Post added!'
-          redirect_to user_posts_path(current_user)
         else
           flash[:error] = 'Something went wrong'
-          redirect_to user_posts_path(current_user)
         end
+        redirect_to user_posts_path(current_user)
       end
     end
   end

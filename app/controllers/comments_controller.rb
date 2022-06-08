@@ -10,11 +10,10 @@ class CommentsController < ApplicationController
       format.html do
         if comment.save
           flash[:success] = 'Comment added!'
-          redirect_back_or_to(post)
         else
           flash[:error] = 'Something went wrong'
-          redirect_back_or_to(post)
         end
+        redirect_back_or_to(post)
       end
     end
   end

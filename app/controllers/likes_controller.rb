@@ -10,11 +10,10 @@ class LikesController < ApplicationController
       format.html do
         if like.save
           flash[:success] = 'Like added!'
-          redirect_back_or_to(post)
         else
           flash[:error] = 'Something went wrong'
-          redirect_back_or_to(post)
         end
+        redirect_back_or_to(post)
       end
     end
   end
