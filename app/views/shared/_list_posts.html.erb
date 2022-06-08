@@ -1,0 +1,16 @@
+<% posts.each do |post| %>
+  <li class="flex-col border post-info">
+    <%= link_to "posts/#{post.id}", class:"flex-col" do %>
+      <div class="post-details">
+      <h4 class="title"><%= truncate post.title, length: 100 %></h4>
+      <p class="text"><%= truncate post.text, length: 100 %></p>
+      <p class="more-info text-end">
+        Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %>
+      </p>
+      </div>
+      <ul class="comments">
+        <%= render "shared/comments", comments: post.five_recent_comments %>
+      </ul>
+    <% end %>
+  </li>
+<% end %>

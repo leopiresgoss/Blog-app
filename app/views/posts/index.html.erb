@@ -1,1 +1,15 @@
-<h1>Here is a list of posts for a given user</h1>
+<section id="posts-index">
+  <ul>
+    <li class="flex">
+      <%= render "shared/user_container", user: @user %>
+    </li>
+    <li>
+      <ul class="posts flex-col">
+        <%= render "shared/list_posts", posts: @posts.reverse %>
+      </ul>
+    </li>
+
+  </ul>
+    
+  </ul>
+</section>

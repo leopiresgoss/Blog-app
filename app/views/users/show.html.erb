@@ -1,1 +1,20 @@
-<h1>Here have the details of a given user.</h1>
+<section id="users-show" class="flex-col">
+  <ul class="user-info flex-col">
+    <li class="flex">
+      <%= render "shared/user_container", user: @user %>
+    </li>
+
+    <li class="bio flex-col border">
+      <h4>Bio</h4>
+      <p><%= @user.bio %></p>
+    </li>
+
+    <li class="posts">
+      <ul class="flex-col">
+        <%= render "shared/list_posts", posts: @user.tree_recent_posts %>
+      </ul>
+    </li>
+  </ul>
+  <%= link_to "See all posts", "#{@user.id}/posts", class: "btn see-all" %>
+</section>
+

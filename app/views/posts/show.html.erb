@@ -1,1 +1,13 @@
-<h1>Here is a post for a given user</h1>
+<section id="posts-show">
+  <div class="post">
+    <div class="post-text border">
+      <h2><%= @post.title %> by <%= @post.author.name%></h2>
+      <br>
+      <p class="more-info text-end" >Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
+      <p class="text"><%= @post.text %></p>
+    </div>
+    <ul class="comments border">
+      <%= render "shared/comments", comments: @post.comments %>
+    </ul>
+  </div>
+</section>
