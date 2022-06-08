@@ -20,6 +20,10 @@ a {
   color: black;
 }
 
+textarea {
+  height: 200px;
+}
+
 li > *,
 .flex {
   display: flex;
@@ -39,8 +43,10 @@ li > *,
 }
 
 .btn {
-  padding: 24px;
-  width: 150px;
+  cursor: pointer;
+  display: block;
+  padding: 16px;
+  width: 100px;
   border: 1px solid rgb(41, 41, 41);
   border-radius: 4px;
   background-color: rgb(109, 109, 109);
@@ -63,6 +69,12 @@ li > *,
 
 .user-info {
   gap: 24px;
+}
+
+.new-post,
+.like {
+  margin-top: 16px;
+  margin-left: auto;
 }
 
 .details {
@@ -96,6 +108,10 @@ li > *,
   margin: 24px auto;
 }
 
+.text {
+  white-space: pre-line;
+}
+
 /* posts */
 #posts-index .posts {
   margin-top: 24px;
@@ -121,6 +137,23 @@ p strong {
   margin-top: 8px;
 }
 
-#posts-show .comments {
+#posts-show .comments,
+.new-comment {
   margin-top: 16px;
+}
+
+/* nee post form */
+#new-post h2 {
+  margin: 2rem 0;
+}
+
+.input-box {
+  gap: 2px;
+  margin-bottom: 16px;
+}
+
+.input-box input,
+.input-box textarea {
+  padding: 8px;
+  border: 0.5px solid black;
 }
