@@ -1,15 +1,11 @@
 <section id="posts-index">
-  <ul>
-    <li class="flex">
+    <div class="flex">
       <%= render "shared/user_container", user: @user %>
-    </li>
-    <li>
+    </div>
+    <%= link_to "New Post", new_user_post_path(@current_user_id), class: "btn new-post" %>
+    <div>
       <ul class="posts flex-col">
         <%= render "shared/list_posts", posts: @posts.reverse %>
       </ul>
-    </li>
-
-  </ul>
-    
-  </ul>
+    </div>
 </section>

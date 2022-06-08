@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <h2><%= flash[:success] %></h2>
+    <h2><%= flash[:error] %></h2>
     <%= yield %>
   </body>
 </html>

@@ -6,8 +6,26 @@
       <p class="more-info text-end" >Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
       <p class="text"><%= @post.text %></p>
     </div>
+    <div class="like">
+      <% if @liked %>
+        <p>Liked!</p>
+      <% else %>
+        <%= form_with url: user_post_likes_path(@current_user, @post), scope: :like do |f| %>
+          <%= f.submit "Like" %>
+        <% end %>
+      <% end %>
+    </div>
     <ul class="comments border">
       <%= render "shared/comments", comments: @post.comments %>
     </ul>
+    <div class="new-comment">
+      <%= form_with url: user_post_comments_path(@current_user, @post), scope: :comment do |f| %>
+        <div>
+          <%= f.label :text, "Add new comment" %>
+          <%= f.text_area :text %>
+        </div>
+        <%= f.submit "Submit" %>
+      <% end %>
+    <div>
   </div>
 </section>
