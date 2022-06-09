@@ -4,6 +4,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:posts).find(params[:id].to_i)
+    @user = User.includes(:posts, :comments).find(params[:id].to_i)
   end
 end

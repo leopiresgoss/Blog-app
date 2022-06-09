@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     @current_user_id = current_user.id.to_i
     user_id = params[:user_id].to_i
     @user = User.includes(:posts).find(user_id)
-    @posts = @user.posts
+    @posts = @user.posts.includes(:comments)
   end
 
   def new
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def show
     @current_user = current_user
     post_id = params[:id].to_i
-    @post = Post.find(post_id)
+    @post = Post.includes(:comments).find(post_id)
     @liked = @current_user.likes.find_by(post: @post)
   end
 
