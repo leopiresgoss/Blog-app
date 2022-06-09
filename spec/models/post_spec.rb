@@ -1,51 +1,100 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  subject do
+  subject(:post) do
     user = User.create(name: 'Maria', photo: '', bio: 'Teacher from Brazil.')
     Post.new(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
   end
-  before { subject.save }
 
-  it 'does not validate without an author' do
-    subject.author = nil
-    expect(subject).to_not be_valid
+  before { post.save }
+
+  describe 'validations' do
+    it 'does not validate without an author' do
+      post.author = nil
+      expect(post).to_not be_valid
+    end
+
+    it 'does not validate without a title' do
+      post.title = nil
+      expect(post).to_not be_valid
+    end
+
+    it 'does not validate when a title is blank' do
+      post.title = ''
+      expect(post).to_not be_valid
+    end
+
+    it 'does not validate when a title exceeds 250char' do
+      post.title = 'kkkkkkkkkkkkkkkkkkkkkkkk
+                      kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                      kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                      kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                      kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                      kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                      kkkkkkkkkkkkkkkkkkk'
+
+      expect(post).to_not be_valid
+    end
+
+    it 'does not validate without a text' do
+      post.text = nil
+      expect(post).to_not be_valid
+    end
+
+    it 'does not validate if likes_counter is not >= 0' do
+      post.likes_counter = -5
+      expect(post).to_not be_valid
+    end
+
+    it 'does not validate if comments_counter is not >= 0' do
+      post.comments_counter = -5
+      expect(post).to_not be_valid
+    end
   end
 
-  it 'does not validate without a title' do
-    subject.title = nil
-    expect(subject).to_not be_valid
+  describe '#five_recent_comments' do
+    subject(:five_recent_comments) do
+      author = post.author
+      post.comments.create(text: '1', author:)
+      post.comments.create(text: '2', author:)
+      post.comments.create(text: '3', author:)
+      post.comments.create(text: '4', author:)
+      post.comments.create(text: '5', author:)
+      post.comments.create(text: '6', author:)
+      post.comments.create(text: '7', author:)
+      post.comments.create(text: '8', author:)
+      post.five_recent_comments
+    end
+
+    it 'should return an array of comments' do
+      expect(five_recent_comments).to all(be_instance_of(Comment))
+    end
+
+    it 'should return the last five recent comments for a post' do
+      expect(five_recent_comments.length).to eq(5)
+    end
+
+    it 'should not return the 1th comment' do
+      expect(five_recent_comments).not_to include(id: 1)
+    end
   end
 
-  it 'does not validate when a title is blank' do
-    subject.title = ''
-    expect(subject).to_not be_valid
+  describe '#increment_user_posts_counter' do
+    it 'increment the posts_counter by one' do
+      author = post.author
+      prev_posts_counter = author.posts_counter
+
+      Post.create(author:, title: 'title', text: 'text')
+
+      expect(author.posts_counter).to eq(prev_posts_counter + 1)
+    end
   end
 
-  it 'does not validate when a title exceeds 250char' do
-    subject.title = 'kkkkkkkkkkkkkkkkkkkkkkkk
-                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                    kkkkkkkkkkkkkkkkkkk'
-
-    expect(subject).to_not be_valid
-  end
-
-  it 'does not validate without a text' do
-    subject.text = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'does not validate if likes_counter is not >= 0' do
-    subject.likes_counter = -5
-    expect(subject).to_not be_valid
-  end
-
-  it 'does not validate if comments_counter is not >= 0' do
-    subject.comments_counter = -5
-    expect(subject).to_not be_valid
+  describe '#decrement_user_posts_counter' do
+    it 'decrement the posts_counter by one' do
+      author = post.author
+      post.destroy
+      expect(author.posts_counter).to eq(0)
+    end
   end
 end
