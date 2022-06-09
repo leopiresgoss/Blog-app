@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Like, type: :model do
   subject(:like) do
     user = User.create(name: 'Maria', photo: '', bio: 'Teacher from Brazil.')
-    post = Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
-    Like.new(author: user, post:)
+    new_post = Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
+    Like.new(author: user, post: new_post)
   end
 
   before { like.save }
@@ -23,12 +23,12 @@ RSpec.describe Like, type: :model do
 
   describe '#increment_post_likes_counter' do
     it 'should increment the post.comments_counter by one' do
-      post = like.post
-      prev_likes_counter = post.likes_counter
+      curr_post = like.post
+      prev_likes_counter = curr_post.likes_counter
 
-      Like.create(author: post.author, post:)
+      Like.create(author: curr_post.author, post: curr_post)
 
-      expect(post.likes_counter).to eq(prev_likes_counter + 1)
+      expect(curr_post.likes_counter).to eq(prev_likes_counter + 1)
     end
   end
 

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   subject(:comment) do
     user = User.create(name: 'Maria', photo: '', bio: 'Teacher from Brazil.')
-    post = Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
-    Comment.new(author: user, post:, text: 'hey')
+    new_post = Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
+    Comment.new(author: user, post: new_post, text: 'hey')
   end
 
   before { comment.save }
@@ -28,12 +28,12 @@ RSpec.describe Comment, type: :model do
 
   describe '#increment_post_comments_counter' do
     it 'should increment the post.comments_counter by one' do
-      post = comment.post
-      prev_comments_counter = post.comments_counter
+      curr_post = comment.post
+      prev_comments_counter = curr_post.comments_counter
 
-      Comment.create(author: post.author, post:, text: 'test')
+      Comment.create(author: curr_post.author, post: curr_post, text: 'test')
 
-      expect(post.comments_counter).to eq(prev_comments_counter + 1)
+      expect(curr_post.comments_counter).to eq(prev_comments_counter + 1)
     end
   end
 

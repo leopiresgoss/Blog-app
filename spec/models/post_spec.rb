@@ -54,15 +54,15 @@ RSpec.describe Post, type: :model do
 
   describe '#five_recent_comments' do
     subject(:five_recent_comments) do
-      author = post.author
-      post.comments.create(text: '1', author:)
-      post.comments.create(text: '2', author:)
-      post.comments.create(text: '3', author:)
-      post.comments.create(text: '4', author:)
-      post.comments.create(text: '5', author:)
-      post.comments.create(text: '6', author:)
-      post.comments.create(text: '7', author:)
-      post.comments.create(text: '8', author:)
+      user = post.author
+      post.comments.create(text: '1', author: user)
+      post.comments.create(text: '2', author: user)
+      post.comments.create(text: '3', author: user)
+      post.comments.create(text: '4', author: user)
+      post.comments.create(text: '5', author: user)
+      post.comments.create(text: '6', author: user)
+      post.comments.create(text: '7', author: user)
+      post.comments.create(text: '8', author: user)
       post.five_recent_comments
     end
 
@@ -81,12 +81,12 @@ RSpec.describe Post, type: :model do
 
   describe '#increment_user_posts_counter' do
     it 'increment the posts_counter by one' do
-      author = post.author
-      prev_posts_counter = author.posts_counter
+      user = post.author
+      prev_posts_counter = user.posts_counter
 
-      Post.create(author:, title: 'title', text: 'text')
+      Post.create(author: user, title: 'title', text: 'text')
 
-      expect(author.posts_counter).to eq(prev_posts_counter + 1)
+      expect(user.posts_counter).to eq(prev_posts_counter + 1)
     end
   end
 
