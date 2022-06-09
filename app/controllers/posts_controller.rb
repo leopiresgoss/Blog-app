@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @current_user_id = current_user.id.to_i
     post = Post.new
     respond_to do |format|
-      format.html { render :new, locals: { post: } }
+      format.html { render :new }
     end
   end
 
