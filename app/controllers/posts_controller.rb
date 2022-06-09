@@ -8,9 +8,9 @@ class PostsController < ApplicationController
 
   def new
     @current_user_id = current_user.id.to_i
-    post = Post.new
+    post_new = Post.new
     respond_to do |format|
-      format.html { render :new }
+      format.html { render :new, locals: { post: post_new } }
     end
   end
 
