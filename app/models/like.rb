@@ -2,7 +2,7 @@ class Like < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :post
 
-  validates_associated :post
+  validates_associated :post, :author
 
   before_destroy :decrement_post_likes_counter
   after_save :increment_post_likes_counter
