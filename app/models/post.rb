@@ -3,6 +3,12 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  validates_associated :author
+  validates :title, length: { in: 1..250, message: 'the title should not exceed 250 char' }
+  validates :text, presence: true
+  validates :likes_counter, comparison: { greater_than_or_equal_to: 0 }
+  validates :comments_counter, comparison: { greater_than_or_equal_to: 0 }
+
   before_destroy :decrement_user_posts_counter
   after_save :increment_user_posts_counter
 

@@ -2,15 +2,15 @@ class PostsController < ApplicationController
   def index
     @current_user_id = current_user.id.to_i
     user_id = params[:user_id].to_i
-    @user = User.find(user_id)
-    @posts = Post.where(author_id: user_id)
+    @user = User.includes(:posts).find(user_id)
+    @posts = @user.posts.includes(:comments)
   end
 
   def new
     @current_user_id = current_user.id.to_i
-    post = Post.new
+    post_new = Post.new
     respond_to do |format|
-      format.html { render :new, locals: { post: } }
+      format.html { render :new, locals: { post: post_new } }
     end
   end
 
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def show
     @current_user = current_user
     post_id = params[:id].to_i
-    @post = Post.find(post_id)
+    @post = Post.includes(:comments).find(post_id)
     @liked = @current_user.likes.find_by(post: @post)
   end
 
