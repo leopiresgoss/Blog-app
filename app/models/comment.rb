@@ -2,6 +2,9 @@ class Comment < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :post
 
+  validates_associated :post
+  validates :text, presence: true
+
   before_destroy :decrement_post_comments_counter
   after_save :increment_post_comments_counter
 
