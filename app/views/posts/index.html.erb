@@ -2,7 +2,10 @@
     <div class="flex">
       <%= render "shared/user_container", user: @user %>
     </div>
-    <%= link_to "New Post", new_user_post_path(@current_user_id), class: "btn new-post" %>
+    <% if @current_user %>
+      <%= link_to "New Post", new_user_post_path(@current_user_id), class: "btn new-post" %>
+    <% end %>
+    
     <div>
       <ul class="posts flex-col">
         <%= render "shared/list_posts", posts: @posts.reverse %>

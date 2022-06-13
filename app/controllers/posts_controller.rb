@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+    @current_user = current_user
     @current_user_id = current_user.id.to_i
     user_id = params[:user_id].to_i
     @user = User.includes(:posts).find(user_id)
@@ -7,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @current_user = current_user
     @current_user_id = current_user.id.to_i
     post_new = Post.new
     respond_to do |format|
