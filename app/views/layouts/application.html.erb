@@ -22,5 +22,7 @@
     <h2><%= flash[:success] %></h2>
     <h2><%= flash[:error] %></h2>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>
