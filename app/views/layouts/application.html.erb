@@ -11,14 +11,17 @@
   </head>
 
   <body>
-  <h1>Blog App</h1>
-    <% if @current_user %>
-      <%= link_to "edit", edit_user_registration_path  %>
-      <%= button_to "sign out", destroy_user_session_path, method: :delete  %>
-    <% else %>
-      <%= link_to "sign in", new_user_session_path  %>
-    <% end %>
-
+    <header class="flex-col align-center">
+      <h1>Blog App</h1>
+      <ul>
+        <% if @current_user %>
+          <li><%= link_to "Edit", edit_user_registration_path  %></li>
+          <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete  %></li> 
+        <% else %>
+          <li><%= link_to "Sign In", new_user_session_path  %></li>
+        <% end %>
+      </ul>
+    </header>
     <h2><%= flash[:success] %></h2>
     <h2><%= flash[:error] %></h2>
     <%= yield %>

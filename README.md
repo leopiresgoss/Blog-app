@@ -23,7 +23,7 @@ To get a local copy follow these simple example steps.
 3. Install the project's dependencies by running this command:   
 `bundle install`
 4. Make sure that PostgreSQL is running perfectly in your computer
-5. Run `rails db:setup` to create and setup the database in PostgreSQL
+5. Run `rails db:create` and then `rails db:migrate` to create and setup the database in PostgreSQL
 6. Run `rails s` to start the server
 7. [OPTIONAL] To test the application, run `rspec`
 
