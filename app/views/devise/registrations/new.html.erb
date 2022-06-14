@@ -1,5 +1,6 @@
 <h2>Sign up</h2>
 
+<div class="flex-col form-logs">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -40,5 +41,6 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+</div>
 
 <%= render "devise/shared/links" %>

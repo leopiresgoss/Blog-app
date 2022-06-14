@@ -157,3 +157,21 @@ p strong {
   padding: 8px;
   border: 0.5px solid black;
 }
+
+/* auth forms */
+.form-logs {
+  margin: 24px auto;
+  padding: 24px;
+}
+
+.form-logs form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-logs input,
+.form-logs textarea {
+  border: 1px solid black;
+  padding: 8px;
+}
