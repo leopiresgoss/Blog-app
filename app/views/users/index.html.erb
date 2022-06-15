@@ -1,9 +1,11 @@
 <section id="users-index">
   <ul class="user-info flex-col">
-    <% @users.each do |user| %>
-      <li>
-      <%= link_to(user) do %>
-         <%= render "shared/user_container", user: user %> 
+    <% unless @users.empty? %>
+      <% @users.each do |user| %>
+        <li>
+        <%= link_to(user) do %>
+           <%= render "shared/user_container", user: user %> 
+        <% end %>
       <% end %>
     <% end %>
   </ul>
