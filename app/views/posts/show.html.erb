@@ -10,8 +10,10 @@
       <% if @liked %>
         <p>Liked!</p>
       <% else %>
-        <%= form_with url: user_post_likes_path(@current_user, @post), scope: :like do |f| %>
-          <%= f.submit "Like", :class => "btn btn-like" %>
+        <% if @current_user %>
+          <%= form_with url: user_post_likes_path(@current_user, @post), scope: :like do |f| %>
+            <%= f.submit "Like", :class => "btn btn-like" %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -19,12 +21,14 @@
       <%= render "shared/comments", comments: @post.comments %>
     </ul>
     <div class="new-comment">
+      <% if @current_user %>
       <%= form_with url: user_post_comments_path(@current_user, @post), scope: :comment do |f| %>
         <div class="flex-col input-box">
           <%= f.label :text, "Add new comment" %>
           <%= f.text_area :text %>
         </div>
         <%= f.submit "Submit", :class => "btn submit" %>
+      <% end %>
       <% end %>
     <div>
   </div>

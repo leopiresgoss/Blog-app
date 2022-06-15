@@ -42,6 +42,10 @@ li > *,
   text-align: end;
 }
 
+.align-center {
+  align-items: center;
+}
+
 .btn {
   cursor: pointer;
   display: block;
@@ -53,6 +57,11 @@ li > *,
   color: white;
   font-weight: bold;
   text-align: center;
+}
+
+.flashes {
+  padding: 24px;
+  justify-content: center;
 }
 
 /* users */
@@ -156,4 +165,35 @@ p strong {
 .input-box textarea {
   padding: 8px;
   border: 0.5px solid black;
+}
+
+/* auth forms */
+.form-logs {
+  margin: 24px auto;
+  padding: 24px;
+  align-items: center;
+  gap: 16px;
+}
+
+.form-logs form,
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-logs form {
+  gap: 8px;
+}
+
+.form-logs input,
+.form-logs textarea {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.remember-me {
+  flex-direction: row-reverse;
+  gap: 4px;
+  flex-wrap: wrap;
 }
