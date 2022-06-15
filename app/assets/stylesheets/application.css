@@ -59,6 +59,11 @@ li > *,
   text-align: center;
 }
 
+.flashes {
+  padding: 24px;
+  justify-content: center;
+}
+
 /* users */
 .user-avatar.sm {
   width: 200px;

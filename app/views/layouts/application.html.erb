@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <!-- <%= javascript_importmap_tags %> -->
   </head>
 
   <body>
@@ -22,10 +22,13 @@
         <% end %>
       </ul>
     </header>
-    <h2><%= flash[:success] %></h2>
-    <h2><%= flash[:error] %></h2>
+    <div class="flashes flex align-center">
+      <h2><%= flash[:success] %></h2>
+      <h2><%= flash[:error] %></h2>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    
   </body>
 </html>

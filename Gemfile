@@ -78,6 +78,4 @@ group :test do
   gem 'webdrivers'
 end
 
-# Devise
 gem 'devise'
-gem 'letter_opener', group: :development
