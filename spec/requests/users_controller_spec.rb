@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe '/users', type: :request do
   subject do
-    User.create(name: 'Tom', photo: '', bio: 'Teacher from Mexico.')
+    User.create(name: 'Maria', email: 'maria@email.com', password: 'password', photo: '', bio: 'Teacher from Brazil.',
+                confirmed_at: Time.now)
   end
 
   describe 'Get #index' do

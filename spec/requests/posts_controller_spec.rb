@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe '/posts', type: :request do
   subject do
-    user = User.create(name: 'Tom', photo: '', bio: 'Teacher from Mexico.')
+    user = User.create(name: 'Maria', email: 'maria@email.com', password: 'password', photo: '',
+                       bio: 'Teacher from Brazil.', confirmed_at: Time.now)
     Post.create(author: user, title: 'Hello 2', text: 'This is my second post')
   end
 
