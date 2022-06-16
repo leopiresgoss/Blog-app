@@ -11,7 +11,8 @@ RSpec.describe 'Post1 Page', type: :system do
     @third_user = User.create(name: 'user3', email: 'user3@example.com', password: 'password',
                               photo: 'https://images.unsplash.com/photo-1616587894289-86480e533129',
                               confirmed_at: Time.now)
-    @first_post = Post.create(author: @first_user, title: 'title-first', text: 'asdisadokjpsdaposacopasclscmlçcsacsacsa')
+    @first_post = Post.create(author: @first_user, title: 'title-first',
+                              text: 'asdisadokjpsdaposacopasclscmlçcsacsacsa')
 
     Comment.create(author: @second_user, post: @first_post, text: '1-comment')
     Comment.create(author: @third_user, post: @first_post, text: '2-comment')
