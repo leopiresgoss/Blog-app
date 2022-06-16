@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   subject(:like) do
-    user = User.create(name: 'Maria', photo: '', bio: 'Teacher from Brazil.')
-    new_post = Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
+    user = User.create(name: 'Maria', email: 'maria@email.com', password: 'password', photo: '',
+                       bio: 'Teacher from Brazil.', confirmed_at: Time.now)
+    new_post = Post.create(author: user, title: 'Hello 1', text: 'This is my first post')
     Like.new(author: user, post: new_post)
   end
 

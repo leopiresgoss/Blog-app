@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { User.new(name: 'Maria', photo: '', bio: 'Teacher from Brazil.') }
+  subject(:user) do
+    User.create(name: 'Maria', email: 'maria@email.com', password: 'password', photo: '', bio: 'Teacher from Brazil.',
+                confirmed_at: Time.now)
+  end
 
   before { user.save }
 
@@ -19,10 +22,10 @@ RSpec.describe User, type: :model do
 
   describe '#tree_recent_posts' do
     subject(:tree_recent_posts) do
-      Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
-      Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
-      Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
-      Post.create(author: user, title: 'Hello 1 (Tom)', text: 'This is my first post')
+      Post.create(author: user, title: 'Hello 1', text: 'This is my first post')
+      Post.create(author: user, title: 'Hello 2', text: 'This is my second post')
+      Post.create(author: user, title: 'Hello 3', text: 'This is my third post')
+      Post.create(author: user, title: 'Hello 4', text: 'This is my fourth post')
       user.tree_recent_posts
     end
 
