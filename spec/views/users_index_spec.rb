@@ -9,7 +9,6 @@ RSpec.describe 'Users Page', type: :system do
                 photo: 'https://images.unsplash.com/photo-1503945438517-f65904a52ce6',
                 confirmed_at: Time.now)
     @first_post = Post.create(author: @first_user, title: 'title-first', text: 'test')
-    @first_post.update_posts_count
   end
 
   describe 'has index of all users' do
@@ -26,8 +25,8 @@ RSpec.describe 'Users Page', type: :system do
     end
 
     it 'can see the number of posts each user has written' do
-      expect(page).to have_content('Number Of Posts: 1')
-      expect(page).to have_content('Number Of Posts: 0')
+      expect(page).to have_content('Number of posts: 1')
+      expect(page).to have_content('Number of posts: 0')
     end
 
     it "redirects to that user's show page when I click on a user" do
